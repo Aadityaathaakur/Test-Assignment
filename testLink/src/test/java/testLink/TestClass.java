@@ -32,7 +32,7 @@ public class TestClass {
 		ActionClass.Sortable_Data_Tables();
 		
 	}
-	  @Test
+	 @Test
 	   public void test005_authenticate(){
 		
 		   Assert.assertTrue(ActionClass.verify_login_page());
@@ -43,6 +43,15 @@ public class TestClass {
 		 
 		   String element= ActionClass.verify_invalid_credentiails();
 		   Assert.assertEquals(element, "Your username is invalid!");
+	   }
+	   
+	   @Test
+	   public void test007_authenticate_valid() throws InterruptedException{
+		 
+		   String element= ActionClass.verify_valid_credentiails();
+		   System.out.println(element);
+		   Assert.assertEquals(element, "You logged out of the secure area!"
+		   		+ "×");
 	   }
 	
 	
