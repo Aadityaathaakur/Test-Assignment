@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="6" passed="6">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="4678" started-at="2018-07-09T08:40:59Z" finished-at="2018-07-09T08:41:04Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="4678" started-at="2018-07-09T08:40:59Z" finished-at="2018-07-09T08:41:04Z">
+      <class name="testLink.TestClass">
+        <test-method status="PASS" signature="launch()[pri:0, instance:testLink.TestClass@548a9f61]" name="launch" is-config="true" duration-ms="2630" started-at="2018-07-09T14:10:59Z" finished-at="2018-07-09T14:11:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launch -->
+        <test-method status="PASS" signature="test001_basic_auth_test()[pri:0, instance:testLink.TestClass@548a9f61]" name="test001_basic_auth_test" duration-ms="4" started-at="2018-07-09T14:11:02Z" finished-at="2018-07-09T14:11:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test001_basic_auth_test -->
+        <test-method status="PASS" signature="test002_Check_for_Broken_Image()[pri:0, instance:testLink.TestClass@548a9f61]" name="test002_Check_for_Broken_Image" duration-ms="425" started-at="2018-07-09T14:11:02Z" finished-at="2018-07-09T14:11:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test002_Check_for_Broken_Image -->
+        <test-method status="PASS" signature="test003_Exit_Intent()[pri:0, instance:testLink.TestClass@548a9f61]" name="test003_Exit_Intent" duration-ms="315" started-at="2018-07-09T14:11:02Z" finished-at="2018-07-09T14:11:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test003_Exit_Intent -->
+        <test-method status="PASS" signature="test004_Sortable_Data_Tables()[pri:0, instance:testLink.TestClass@548a9f61]" name="test004_Sortable_Data_Tables" duration-ms="363" started-at="2018-07-09T14:11:03Z" finished-at="2018-07-09T14:11:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test004_Sortable_Data_Tables -->
+        <test-method status="PASS" signature="test005_authenticate()[pri:0, instance:testLink.TestClass@548a9f61]" name="test005_authenticate" duration-ms="341" started-at="2018-07-09T14:11:03Z" finished-at="2018-07-09T14:11:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test005_authenticate -->
+        <test-method status="PASS" signature="test006_authenticate_Invalid()[pri:0, instance:testLink.TestClass@548a9f61]" name="test006_authenticate_Invalid" duration-ms="578" started-at="2018-07-09T14:11:04Z" finished-at="2018-07-09T14:11:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test006_authenticate_Invalid -->
+      </class> <!-- testLink.TestClass -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
