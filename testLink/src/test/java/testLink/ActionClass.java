@@ -128,6 +128,20 @@ public class ActionClass {
 		}
 	}
 		
+	public static String verify_valid_credentiails() throws InterruptedException {
+		driver.findElement(By.xpath("//*[@alt='go to home']")).click();
+		driver.findElement(By.xpath("//*[@href='/login']")).click();
+		driver.findElement(By.id("username")).sendKeys("tomsmith");
+		driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
+		driver.findElement(By.cssSelector("button.radius")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@href='/logout']")).click();
+		 
+		return driver.findElement(By.xpath("//*[@id='flash']")).getText();
+		
+        
+		
+	}
 		
 	}
 
