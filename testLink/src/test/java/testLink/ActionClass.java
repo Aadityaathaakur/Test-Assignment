@@ -1,5 +1,6 @@
 package testLink;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.apache.http.HttpResponse;
@@ -17,11 +18,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import io.restassured.RestAssured;
 
 public class ActionClass {
 	static WebDriver driver;
 	static int invalidImageCount;
 	static WebDriverWait wait;
+	
 	public static void launchBrowser()
 	{
 		System.setProperty("webdriver.chrome.driver", "/home/qainfotech/Desktop/chromedriver");
@@ -33,21 +36,12 @@ public class ActionClass {
 	}
 	
 	public static void basic_auth() throws InterruptedException{
-		driver.findElement(By.xpath("//*[@href='/basic_auth']")).click();
+		//driver.findElement(By.xpath("//*[@href='/basic_auth']")).click();
 		
-//		String admin="admin";
-//		String URL = "http://" + admin + ":" + admin + "@" + "10.0.31.161:9292";
-//		driver.get(URL);
-//		Alert alert = driver.switchTo().alert();
-//		alert.accept();
-		
-		driver.switchTo().alert();
-		driver.findElement(By.id("username")).sendKeys("admin");
-		driver.findElement(By.id("password")).sendKeys("admin");
-		driver.switchTo().alert().accept();
-		driver.switchTo().defaultContent();
-		
-		
+		String admin="admin";
+		String URL = "http://" + admin + ":" + admin + "@" + "10.0.31.161:9292/basic_auth";
+		driver.navigate().to(URL);
+
 	
 		
 	
@@ -136,12 +130,14 @@ public class ActionClass {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpGet request = new HttpGet(imgElement.getAttribute("src"));
 			HttpResponse response = (HttpResponse) client.execute(request);
+			List<String> source= new ArrayList<String>();
 			// verifying response code he HttpStatus should be 200 if not,
 			// increment as invalid images count
 			if (((org.apache.http.HttpResponse) response).getStatusLine().getStatusCode() != 200)
 				{
 				invalidImageCount++;
 				
+				//source.add();
 				}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -211,18 +207,48 @@ public class ActionClass {
 		   return driver.findElement(By.xpath("//*[@class='mce-path-item mce-last']")).getText();
 	   }
 	   
-	   public static String Status_Codes() throws InterruptedException
-	   {
+	   public static int Status_Codes() throws InterruptedException
+	   {int statusCode = 0;
 		   wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@alt='go to home']")));
 		   driver.findElement(By.xpath("//*[@alt='go to home']")).click();
 		   driver.findElement(By.xpath("//*[@href='/status_codes']")).click();
 		   
-		driver.findElement(By.xpath("//*[@href='status_codes/404']")).click();
-		//return 
-		 String st= driver.findElement(By.xpath("//*[@class='example']/p")).getText();
+		WebElement url = driver.findElement(By.xpath("//*[@href='status_codes/404']"));
+		
+		/* String st= driver.findElement(By.xpath("//*[@class='example']/p")).getText();
 		st= st.replaceAll("\\s+","")  ;
-		// System.out.println("sss"+st);
-	   return st;
+		*/
+		/*
+		if(driver.getPageSource().contains("404"))
+		{
+			System.out.println("404");
+		}*/
+		
+	/*	String href =href = url.getAttribute("href");
+		
+		 statusCode = RestAssured.get(href).statusCode();
+
+        if(statusCode==404) {
+            System.out.println(href + " gave a response code of " + statusCode);
+            
+        }*/
+		
+		try {
+			HttpClient client = HttpClientBuilder.create().build();
+			HttpGet request = new HttpGet(url.getAttribute("href"));
+			HttpResponse response = (HttpResponse) client.execute(request);
+			
+			statusCode=((org.apache.http.HttpResponse) response).getStatusLine().getStatusCode();
+			if (statusCode == 404)
+				{
+				
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	   return statusCode;
 	   }
 	}
 
